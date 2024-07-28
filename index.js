@@ -20,36 +20,34 @@ app.get("/api/monsters", (req, res) => {
   res.json(apiData.monsters);
 });
 
+app.get("/api/battles", (req, res) => {
+  res.json(apiData.battles);
+});
+
 app.post("/api/battle", (req, res) => {
   const body = req.body;
-  const playerMonster = apiData.monsters.filter(
+  const playerMonster = apiData.monsters.find(
     (monster) => monster.id === body.monsterIdPlayer
   );
-  const computerMonster = apiData.monsters.filter(
+  const computerMonster = apiData.monsters.find(
     (monster) => monster.id === body.monsterIdComputer
   );
-  let monsterPlayerIsMostStrong = playerMonster.every(
-    (monster) => monster.attack > computerMonster[0].attack
-  );
-  let responseApi = { winner: "" };
-  if (monsterPlayerIsMostStrong) {
-    responseApi = {
-      winner: playerMonster[0],
-    };
-  } else {
-    responseApi = {
-      winner: computerMonster[0],
-    };
-  }
 
-  let dbFile = fs.readFileSync("./db.json");
+  // Determine the winner based on attack strength
+  const monsterPlayerIsMostStrong =
+    playerMonster.attack > computerMonster.attack;
+  const winner = monsterPlayerIsMostStrong ? playerMonster : computerMonster;
+
+  // Update the battles data in your database
+  let dbFile = fs.readFileSync("./db.json", "utf-8");
   let myObject = JSON.parse(dbFile);
-  myObject.battles.push(responseApi);
-  let newBatte = JSON.stringify(myObject);
-  fs.writeFile("./db.json", newBatte, (err) => {
-    // Error checking
+  myObject.battles.push({ winner });
+  let newBattle = JSON.stringify(myObject);
+  fs.writeFileSync("./db.json", newBattle, "utf-8", (err) => {
     if (err) throw err;
-    console.log("New data added");
+    console.log("New battle data added");
   });
-  res.status(201).json(responseApi);
+
+  // Send the winner as the API response
+  res.status(201).json({ winner });
 });
