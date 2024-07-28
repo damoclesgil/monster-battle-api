@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const data = require("./db.json");
+const apiData = require("./db.json");
 app.use(bodyParser.json());
 const fs = require("fs");
 
@@ -17,15 +17,15 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.get("/api/monsters", (req, res) => {
-  res.json(data.monsters);
+  res.json(apiData.monsters);
 });
 
 app.post("/api/battle", (req, res) => {
   const body = req.body;
-  const playerMonster = data.monsters.filter(
+  const playerMonster = apiData.monsters.filter(
     (monster) => monster.id === body.monsterIdPlayer
   );
-  const computerMonster = data.monsters.filter(
+  const computerMonster = apiData.monsters.filter(
     (monster) => monster.id === body.monsterIdComputer
   );
   let monsterPlayerIsMostStrong = playerMonster.every(
@@ -41,7 +41,15 @@ app.post("/api/battle", (req, res) => {
       winner: computerMonster[0],
     };
   }
-  // const testlistJson = JSON.stringify(data);
-  // fs.writeFileSync("./db.json", testlistJson, "utf8");
+
+  let dbFile = fs.readFileSync("./db.json");
+  let myObject = JSON.parse(dbFile);
+  myObject.battles.push(responseApi);
+  let newBatte = JSON.stringify(myObject);
+  fs.writeFile("./db.json", newBatte, (err) => {
+    // Error checking
+    if (err) throw err;
+    console.log("New data added");
+  });
   res.status(201).json(responseApi);
 });

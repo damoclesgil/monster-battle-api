@@ -1,16 +1,59 @@
 {
-    "monsters": [
-      {
-        "id": "monster-1",
-        "name": "Dead Unicorn",
-        "attack": 30,
-        "defense": 40,
-        "hp": 10,
-        "speed": 80,
-        "type": "Type",
-        "imageUrl": "images/dead-unicorn.png"
-      },
-      {
+  "monsters": [
+    {
+      "id": "monster-1",
+      "name": "Dead Unicorn",
+      "attack": 30,
+      "defense": 40,
+      "hp": 10,
+      "speed": 80,
+      "type": "Type",
+      "imageUrl": "images/dead-unicorn.png"
+    },
+    {
+      "id": "monster-2",
+      "name": "Old Shark",
+      "attack": 40,
+      "defense": 40,
+      "hp": 10,
+      "speed": 80,
+      "type": "Type",
+      "imageUrl": "images/old-shark.png"
+    },
+    {
+      "id": "monster-3",
+      "name": "Red Dragon",
+      "attack": 60,
+      "defense": 40,
+      "hp": 10,
+      "speed": 80,
+      "type": "Type",
+      "imageUrl": "images/red-dragon.png"
+    },
+    {
+      "id": "monster-4",
+      "name": "Robot Bear",
+      "attack": 70,
+      "defense": 40,
+      "hp": 10,
+      "speed": 80,
+      "type": "Type",
+      "imageUrl": "images/robot-bear.png"
+    },
+    {
+      "id": "monster-5",
+      "name": "Angry Snake",
+      "attack": 80,
+      "defense": 40,
+      "hp": 10,
+      "speed": 80,
+      "type": "Type",
+      "imageUrl": "images/angry-snake.png"
+    }
+  ],
+  "battles": [
+    {
+      "winner": {
         "id": "monster-2",
         "name": "Old Shark",
         "attack": 40,
@@ -19,70 +62,7 @@
         "speed": 80,
         "type": "Type",
         "imageUrl": "images/old-shark.png"
-      },
-      {
-        "id": "monster-3",
-        "name": "Red Dragon",
-        "attack": 60,
-        "defense": 40,
-        "hp": 10,
-        "speed": 80,
-        "type": "Type",
-        "imageUrl": "images/red-dragon.png"
-      },
-      {
-        "id": "monster-4",
-        "name": "Robot Bear",
-        "attack": 70,
-        "defense": 40,
-        "hp": 10,
-        "speed": 80,
-        "type": "Type",
-        "imageUrl": "images/robot-bear.png"
-      },
-      {
-        "id": "monster-5",
-        "name": "Angry Snake",
-        "attack": 80,
-        "defense": 40,
-        "hp": 10,
-        "speed": 80,
-        "type": "Type",
-        "imageUrl": "images/angry-snake.png"
       }
-    ],
-    "battle": [
-      {
-        "winner": {
-          "id": "monster-1",
-          "name": "Monster 1",
-          "attack": 60,
-          "defense": 40,
-          "hp": 10,
-          "speed": 80,
-          "type": "Type",
-          "imageUrl": "image url"
-        },
-        "tie": false
-      },
-      {
-        "id": "a904",
-        "winner": {
-          "id": "monster-2",
-          "name": "Monster 1",
-          "attack": 60,
-          "defense": 40,
-          "hp": 10,
-          "speed": 80,
-          "type": "Type",
-          "imageUrl": "image url"
-        },
-        "tie": false
-      },
-      {
-        "id": "5279",
-        "monster1Id": "monster-1",
-        "monster2Id": "monster-2"
-      }
-    ]
-  }
+    }
+  ]
+}
