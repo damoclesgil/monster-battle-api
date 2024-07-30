@@ -52,6 +52,17 @@
         }
     ],
     "battles": [
-    
+        {
+            "winner": {
+                "id": "monster-2",
+                "name": "Old Shark",
+                "attack": 40,
+                "defense": 60,
+                "hp": 20,
+                "speed": 20,
+                "type": "Type",
+                "imageUrl": "images/old-shark.png"
+            }
+        }
     ]
 }
