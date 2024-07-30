@@ -38,9 +38,15 @@ app.post("/api/battle", (req, res) => {
   );
 
   // Determine the winner based on attack strength
-  const monsterPlayerIsMostStrong =
-    playerMonster.attack > computerMonster.attack;
-  const winner = monsterPlayerIsMostStrong ? playerMonster : computerMonster;
+  const monsterPlayerIsMostStrong = playerMonster.attack > computerMonster.attack;
+  let winner = monsterPlayerIsMostStrong ? playerMonster : computerMonster;
+
+  if (playerMonster.id === computerMonster.id) {
+    winner = {
+      ...playerMonster,
+      tie: true,
+    }
+  }
 
   // Update the battles data in your database
   // let dbFile = fs.readFileSync("./db.json", "utf-8");
