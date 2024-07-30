@@ -4,13 +4,17 @@ const app = express();
 const apiData = require("./db.json");
 app.use(bodyParser.json());
 const fs = require("fs");
+const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-let todos = [];
+app.use(cors({
+  origin: '*'
+}));
+
 
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello, World!" });
