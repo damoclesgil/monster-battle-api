@@ -43,14 +43,14 @@ app.post("/api/battle", (req, res) => {
   const winner = monsterPlayerIsMostStrong ? playerMonster : computerMonster;
 
   // Update the battles data in your database
-  let dbFile = fs.readFileSync("./db.json", "utf-8");
-  let myObject = JSON.parse(dbFile);
-  myObject.battles.push({ winner });
-  let newBattle = JSON.stringify(myObject);
-  fs.writeFileSync("./db.json", newBattle, "utf-8", (err) => {
-    if (err) throw err;
-    console.log("New battle data added");
-  });
+  // let dbFile = fs.readFileSync("./db.json", "utf-8");
+  // let myObject = JSON.parse(dbFile);
+  // myObject.battles.push({ winner });
+  // let newBattle = JSON.stringify(myObject);
+  // fs.writeFileSync("./db.json", newBattle, "utf-8", (err) => {
+  //   if (err) throw err;
+  //   console.log("New battle data added");
+  // });
 
   // Send the winner as the API response
   res.status(201).json({ winner });
